@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGIMoving</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="assets/images/CGI_logo.png">
+</head>
+<body>
+  <header class="bg-white shadow-md position z-40">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="index.html" class="flex items-center">
+                <img src="assets/images/CGI_logo.png" class="h-16 mr-3" alt="CGILogo" />
+            </a>
+        <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li class="md:pl-4">
+              <a href="index.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="activities.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Activities</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="event.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Event</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="admin.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin</a>
+            </li>
+            <li class="flex flex-row md:border-l-2 md:border-gray-500 md:pl-6 md:pr-12 nav-link">
+                <div class="flex text-sm bg-gray-800 rounded-full md:mr-4" id="user-pic" aria-expanded="false">
+                  <img class="w-8 h-8 rounded-full hidden md:block" src="assets/images/profile_placeholder.jpg" alt="user photo">
+                </div>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="profileLink flex items-center justify-between w-full py-2 pl-3 pr-4 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 transition duration-600 ease-in-out md:hover:text-lake-200 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                  Profile
+                  <svg class="w-2.5 h-2.5 ml-2.5 rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-full md:max-w-fit dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-2 px-3 bg-gray-50 rounded-md text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                      <li class="pl-8 md:p-0">
+                        <a href="profile.html" class="nav-link block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent transition duration-600 ease-in-out md:hover:text-lake-200 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                      </li>
+                      <li aria-labelledby="dropdownNavbarLink" class="pl-8 md:p-0">
+                        <button type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 md:hover:bg-transparent transition duration-600 ease-in-out md:hover:text-lake-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                          Log out
+                        </button>
+                      </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+              <button id="instructionBtn" type="button" class="p-2 w-6 h-6 transition duration-600 ease-in-out relative justify-center items-center  mx-auto my-auto text-sm text-gray-600 bg-gray-100 rounded-xl hidden md:block hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                  <span class="absolute inset-0 flex justify-center items-center">?</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <div class="flex max-w-screen-2xl 2xl:max-w-screen-xl 2xl:px-6 mx-auto justify-between">
+      <!-- sidebar -->
+      <aside id="sidebar" class="pt-12 md:pt-64 lg:pt-52 px-6 filter flex-none w-full relative ml-0 left-0 bg-lake-100 min-h-min md:max-w-xs shadow-xs shadow-cloudy-200 transform hidden lg:flex lg:justify-end lg:translate-x-0 transition-transform ease-in-out duration-600 lg:relative z-30">
+        <div class="filter-col w-auto px-4 md:px-0 md:pt-4 lg:pt-10 lg:w-fit justify-end ">
+          <div class="mb-2 flex justify-between">
+            <h5 class="font-semibold my-auto text-midnight w-full">Filter</h5>
+            <button id="closeFilter" type="button" class="closeFilter w-10 h-10 block lg:hidden relative cursor-pointer text-gray-400 hover:text-gray-600">
+              <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+            </button>
+          </div>
+            <!-- input search -->
+          <div class="relative mr-3 md:mt-3 lg:mt-6 flex">
+            <input type="search" class="activity-search w-full bg-transparent font-extralight absolute pl-12 py-2 text-cloudy-400 border border-cloudy-400 rounded focus:ring-transparent focus:border-midnight" placeholder="Search">
+              <svg version="1.1" class="h-4 m-3 text-cloudy-400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 52.966 52.966" style="enable-background:new 0 0 52.966 52.966;" xml:space="preserve">
+                <path d="M51.704,51.273L36.845,35.82c3.79-3.801,6.138-9.041,6.138-14.82c0-11.58-9.42-21-21-21s-21,9.42-21,21s9.42,21,21,21
+                  c5.083,0,9.748-1.817,13.384-4.832l14.895,15.491c0.196,0.205,0.458,0.307,0.721,0.307c0.25,0,0.499-0.093,0.693-0.279
+                  C52.074,52.304,52.086,51.671,51.704,51.273z M21.983,40c-10.477,0-19-8.523-19-19s8.523-19,19-19s19,8.523,19,19
+                  S32.459,40,21.983,40z"/>
+              </svg>
+          </div>
+          <div class="flex flex-col gap-1 p-2 text-base font-normal text-gray-700">
+          <fieldset class="period-checkboxes space-y-2 appearance-none border-b border-b-cloudy-300 py-4">
+              <legend class="hidden">Choose period</legend>
+              <div class="flex items-center">
+                <input type="checkbox" class="hidden peer bg-lake-200" id="year" checked />
+                <label
+                    for="year"
+                    class="relative flex h-4 cursor-pointer pl-8 select-none text-sm peer-checked:before:text-xl  
+                    before:absolute before:left-0 before:flex before:h-4 before:w-4 
+                    before:items-center before:justify-center before:rounded-sm before:border 
+                    before:border-midnight before:bg-white before:transition-[background-color] 
+                    before:duration-300 before:ease-in before:content-[''] 
+                    peer-checked:before:text-midnight text-cloudy-200 font-light peer-checked:font-normal peer-checked:text-midnight
+                    peer-checked:before:content-['\2713'] peer-checked:before:font-light 
+                    peer-checked:before:transition-[background-color] peer-checked:before:duration-300 peer-checked:before:ease-in
+                    items-center">
+                    Year
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" class="hidden peer bg-lake-200" id="month"/>
+                <label
+                    for="month"
+                    class="relative flex h-4 cursor-pointer pl-8 select-none text-sm peer-checked:before:text-xl  
+                    before:absolute before:left-0 before:flex before:h-4 before:w-4 
+                    before:items-center before:justify-center before:rounded-sm before:border 
+                    before:border-midnight before:bg-white before:transition-[background-color] 
+                    before:duration-300 before:ease-in before:content-[''] 
+                    peer-checked:before:text-midnight text-cloudy-200 font-light peer-checked:font-normal peer-checked:text-midnight
+                    peer-checked:before:content-['\2713'] peer-checked:before:font-light 
+                    peer-checked:before:transition-[background-color] peer-checked:before:duration-300 peer-checked:before:ease-in
+                    items-center">
+                    Month
+                </label>
+              </div>
+          </fieldset>
+          <fieldset class="fieldset-activities space-y-2 appearance-none">
+            <legend class="hidden">Choose your activities:</legend>
+          </fieldset>
+          </div>
+        </div>
+      </aside>
+      <div class="flex flex-auto flex-col lg:flex-row lg:w-full">
+        <main class="md:flex-auto w-full lg:w-8/12 mx-auto md:mt-14">
+          <!--hade innan mx-auto för center-->
+          <section class="activity-table mx-auto w-full md:my-12 lg:my-4 lg:px-4">
+                <div class="lg:mt-0 w-full">
+                  <div class="px-3 md:px-4 py-6 w-full lg:mx-auto">
+                    <div class="flex justify-between">
+                      <h1 class=" text-3xl md:text-4xl font-semibold text-gray-900 mb-3">Activities</h1>
+                      <div class="mb-2 p-2 flex lg:hidden border-l border-midnight" id="openSidebar">
+                        <!-- <h5 class="font-semibold my-auto text-midnight pr-2">Filter</h5> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="mt-10 w-full flex justify-center">
+                      <button type="button" class="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                      </button>
+                      <h2 class="period text-xl md:text-2xl text-midnight font-light px-8"></h2>
+                      <button type="button" class="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                      </button>
+                    </div>
+                    <table class="table-auto w-full text-left">
+                        <thead>
+                            <tr class="flex justify-between text-left border-b border-cloudy-100 py-6">
+                              <th class="font-semibold w-1/5">Date</th>
+                              <th class="font-semibold w-1/5">Type</th>
+                              <th class="font-semibold w-1/5 text-center items-center flex justify-center">Time</th>
+                              <th class="font-semibold w-1/5 text-center">Feeling</th>
+                              <th class="font-semibold w-1/5 text-center">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                          <!-- generated in js-->
+                        </tbody>
+                    </table>
+                    <div class="loadMoreContainer flex justify-center px-8 py-8">
+                      <button id="loadMore" class="loadMore mt-4 mx-2 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1 px-8 rounded-full">
+                        Show more
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              
+          </section>
+          <!-- The overlay for pop-up windows -->
+          <div id="overlay" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-40"></div>
+          <!-- The video tutorial pop-up window -->
+          <div id="popup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg w-10/12 lg:w-7/12 z-50 text-center rounded-xl hidden">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="px-14 pb-8 ">
+              <h2 class="text-2xl font-semibold mb-6 text-left">Instructions video for CGI<span class="font-light text-gray-800">Moving</span></h2>
+              <p class="text-sm text-left mb-4 font-light text-gray-800">Is there something that isn't working out? Or something that you are wondering about? Check out the instructions video below! Hopefully it will answer all your questions.</p>
+              <img class="w-10/12 lg:w-7/12" src="assets/images/vidImg.png" alt="pic of video-preview">
+              <div class="flex justify-end">
+                <button id="closePopup" class="closePopupBtn mt-4 bg-lake-200 hover:bg-lake-300 text-white font-bold py-1 px-8 rounded-full">Ok!</button>
+              </div>
+            </div>
+          </div>
+          <!-- EDIT ACTIVITY POPUP WINDOW-->
+          <div id="edit-popup" class="edit-shell hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg w-full sm:w-9/12 sm:max-w-xl lg:w-7/12 lg:max-w-xl overflow-y-scroll sm:overflow-y-visible  h-screen sm:h-auto z-50 text-center rounded-xl">
+              <div class="flex justify-end w-auto">
+                  <button id="editClose" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                      <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+                  </button>
+              </div>    
+              <div class="register-dashboard flex flex-col items-center w-fit mx-auto">
+                  <h2 class="text-3xl w-full text-center sm:text-left font-semibold text-gray-900 mb-6 sm:pl-2">Edit Activity</h2>
+                  <div class="dashboard sm:flex sm:flex-row">
+                    <div class="dashboard-left px-3">
+                      <div class="datepicker text-center flex-1 mb-6 sm:mb-12">
+                        <label for="datepicker">Date*</label>
+                        <div inline-datepicker class="mt-2" name="datepicker" id="datepickerId"></div>
+                      </div>
+                      <div class="text-center mb-6 sm:mb-0 w-full sm:px-0 sm:w-full mx-auto">
+                        <label for="activity">Activity*</label>
+                        <div id="activity-container" class="relative custom-select mt-2">
+                          <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight text-gray-600 text-sm rounded-md w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <span class="custom-selected">Swimming</span>
+                            <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                          </button>
+
+                          <div class="custom-options w-full mt-1 hidden absolute rounded-md bg-white shadow-lg border border-gray-500 z-50">
+                            <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="Swimming">Swimming</button>
+                            <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="Running">Running</button>
+                            <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="Walking">Walking</button>
+                            <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="Working Standing Up">Working Standing Up</button>
+                          </div>
+                        </div>
+                        <select id="activity" class="hidden">
+                          <option selected value="Swimming">Swimming</option>
+                          <option value="Running">Running</option>
+                          <option value="Walking">Walking</option>
+                          <option value="Working Standing Up">Working Standing Up</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="dashboard-right px-3">
+                      <div class="text-center mb-6 sm:mb-8 w-full sm:px-0 sm:w-36 mx-auto">
+                      <label for="time">Time</label>
+                      <div id="time-duration" class="relative custom-select mt-2">
+                        <button class="custom-select-trigger bg-white flex flex-row justify-between py-2 border-[1.1px] border-midnight rounded-md text-gray-600 text-sm w-full p-3.5">
+                          <span class="custom-selected">30 min</span>
+                          <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                          </svg>
+                        </button>
+                        <div class="custom-options w-full mt-1 sm:w-36 hidden absolute bg-white border border-midnight rounded-md z-10">
+                          <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="30">30 min</button>
+                          <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="45">45 min</button>
+                          <button class="custom-option text-gray-700 text-sm block px-4 py-2" data-value="60">60 min</button>
+                        </div>
+                      </div>
+                      <select id="time" class="hidden">
+                        <option selected value="30">30 min</option>
+                        <option value="45">45 min</option>
+                        <option value="60">60 min</option>
+                      </select>
+                      </div>
+                      <div class="feeling text-center mb-6 sm:mb-8">
+                        <label for="feeling bg-pinkii">Feeling</label>
+                        <div class="w-full feeling justify-center items-center gap-1 inline-flex py-2.5 px-4 ">
+                            <!-- <icon></icon>-->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feeling-face cursor-pointer mx-1 w-10 h-10 round rounded-full" viewBox="0 0 41 40" fill="none">
+                                <g id="Frame 76">
+                                <circle id="Ellipse 48" cx="20.2134" cy="20" r="19.5" stroke="black"></circle>
+                                <circle id="Ellipse 49" cx="13.2134" cy="15" r="2" fill="black"></circle>
+                                <circle id="Ellipse 50" cx="27.2134" cy="15" r="2" fill="black"></circle>
+                                <path id="Vector 6" d="M9.71338 28.4994C17.7028 23.0608 21.8857 22.9658 28.7134 28.4994" stroke="black"></path>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feeling-face cursor-pointer mx-1 w-10 h-10 round rounded-full" viewBox="0 0 41 40" fill="none">
+                                <g id="Frame 77">
+                                <circle id="Ellipse 48" cx="20.2134" cy="20" r="19.5" stroke="black"></circle>
+                                <circle id="Ellipse 49" cx="13.2134" cy="15" r="2" fill="black"></circle>
+                                <circle id="Ellipse 50" cx="27.2134" cy="15" r="2" fill="black"></circle>
+                                <path id="Vector 6" d="M29.7134 24.3855C21.724 29.8241 17.5411 29.9191 10.7134 24.3855" stroke="black"></path>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feeling-face cursor-pointer mx-1 w-10 h-10 round rounded-full" viewBox="0 0 41 40" fill="none">
+                                <g id="Frame 78">
+                                <circle id="Ellipse 48" cx="20.2134" cy="20" r="19.5" stroke="black"></circle>
+                                <circle id="Ellipse 49" cx="13.2134" cy="15" r="2" fill="black"></circle>
+                                <circle id="Ellipse 50" cx="27.2134" cy="15" r="2" fill="black"></circle>
+                                <path id="Vector 6" d="M29.7134 24.3845C29.7134 35.999 10.7134 34.999 10.7134 24.3845" stroke="black"></path>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="feeling-face cursor-pointer mx-1 w-10 h-10 round rounded-full" viewBox="0 0 41 40" fill="none">
+                                <g id="Frame 79">
+                                <circle id="Ellipse 48" cx="20.2134" cy="20" r="19.5" stroke="black"></circle>
+                                <circle id="Ellipse 49" cx="13.2134" cy="15" r="2" fill="black"></circle>
+                                <circle id="Ellipse 50" cx="27.2134" cy="15" r="2" fill="black"></circle>
+                                <path id="Vector 6" d="M29.7134 24.3845C29.7134 35.999 10.7134 34.999 10.7134 24.3845L29.7134 24.3845Z" stroke="black"></path>
+                                </g>
+                            </svg>
+                        </div>
+                      </div>
+                      <div class="comment text-center mb-4 sm:mb-0 w-full sm:px-0 sm:w-fit mx-auto">
+                        <textarea id="message" rows="5" class="block resize-none p-2.5 w-full text-sm text-gray-600 bg-white border border-midnight focus:ring-transparent focus:border-midnight rounded-md" placeholder="Comment"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex w-full justify-center md:justify-end px-8 py-8 sm:px-0">
+                    <button id="deleteActivity" class="deleteBtn closePopupBtn mx-3 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1 px-6 rounded-full">Delete</button>
+                    <button id="saveActivity" class="saveBtn mx-3 transition duration-600 ease-in-out bg-bubble-gum-300 text-white font-bold py-1 px-8 rounded-full">Save</button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- NOTIFICATIONS AFTER EDIT, POPUP WINDOWS-->
+          <div id="successfullySavedPopup" class="hidden bg-white z-50 w-42 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full sm:-translate-y-1/2 shadow-lg rounded-xl ">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="flex flex-col justify-center text-center sm:w-10/12 mx-auto px-4 sm:px-0">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 bg-forest text-white text-center mx-auto rounded-full p-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <h2 class="font-semibold text-md sm:text-lg md:text-2xl py-4">You successfully saved your changes!</h2>
+            </div>
+            <div class="flex justify-center px-8 pb-8">
+              <button id="closePopup" class="closePopupBtn mt-4 mx-2 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1 px-8 rounded-full">Continue</button>
+            </div>
+          </div>
+          <div id="sureYouWannaDelete" class="hidden bg-white z-50 w-42 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full sm:-translate-y-1/2 shadow-lg rounded-xl ">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="flex flex-col justify-center text-center sm:w-10/12 mx-auto px-4 sm:px-0">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#ee657a" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-28 h-28 text-center mx-auto rounded-full">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <h2 class="font-semibold text-md sm:text-lg md:text-2xl py-2">Are you sure you wanna delete this activity?</h2>
+            </div>
+            <div class="flex justify-center px-8 pb-8">
+              <button id="deleteRow" class="w-2/5 flex justify-center text-sm closePopupBtn mt-4 mx-2 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1.5 px-6 rounded-full">Continue</button>
+              <button id="closePopup" class="w-2/5 flex justify-center text-sm closePopupBtn mt-4 mx-2 bg-lake-200 text-white font-bold py-2 px-6 rounded-full">Cancel</button>
+            </div>
+          </div>
+        </main>
+        <aside class="mt-10 w-10/12 lg:w-auto lg:max-w-xs lg:mt-52 md:pt-4 md:flex-auto mx-auto">
+          <div class="doughnut px-0 mx-auto flex-1">
+              <div class="stats-board flex flex-col items-center px-3 lg:px-0 py-6 relative">
+                <h2 class="text-xl lg:text-sm text-center font-semibold text-gray-900 mb-3">Top Activities</h2>  
+                <!--Dougnhut chart-->
+                <div class="rounded-full flex relative items-center justify-center">
+                  <canvas class="z-10 w-3/5" id="chartDoughnut"></canvas>
+                <div class="z-0 font-bold text-sm py-14 px-14 doughnut-inner w-1/3 h-1/3 rounded-full items-center absolute text-white bg-black left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex justify-center">Your top Activities</div>
+                </div>
+                <!--activity labels container, adding content from js-->
+                <div class="mt-6">
+                  <dl class="flex lg:flew-col gap-x-4">
+                    <div class="flex lg:flex-col lg:justify-between gap-x-3">
+                      <div class="w-auto text-center items-center mb-4">
+                        <dt class="label text-md font-light text-center"></dt>
+                        <dd class="percentage w-14 py-1 mx-auto font-bold border-purple-400 border-b-4 text-center"></dd>
+                      </div>
+                    <div class="w-auto text-center">
+                      <dt class="label text-md font-light"></dt>
+                      <dd class="percentage w-14 py-1 mx-auto font-bold border-pink-400 border-b-4 text-center"></dd>
+                    </div>
+                    </div>
+                    <div class="flex lg:flex-col lg:justify-between gap-x-3">
+                      <div class="w-auto text-center mb-4">
+                        <dt class="label text-md font-light"></dt>
+                        <dd class="percentage w-14 py-1 mx-auto font-bold border-green-400 border-b-4 text-center"></dd>
+                      </div>
+                      <div class="w-auto text-center">
+                        <dt class="label text-md font-light"></dt>
+                        <dd class="percentage w-14 py-1 mx-auto font-bold border-yellow-300 border-b-4 text-center"></dd>
+                      </div>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+          </div>
+          <div class="stats-points pt-12 pb-12 sm:pt-8">
+            <dl class="flex flex-col text-center justify-center gap-y-8">
+              <div class="w-30 flex flex-col gap-y-2">
+                <dt class="leading-7 font-semibold text-sm text-midnight">Total activities</dt>
+                <dd class="amount text-5xl flex justify-center font-bold tracking-tight text-gray-900">46</dd>
+              </div>
+              <div class="w-30 flex flex-col gap-y-2">
+                <dt class="leading-7 font-bold text-sm text-midnight">Total time on acitivites</dt>
+                <dd class="hour text-5xl flex justify-center font-bold tracking-tight text-gray-900 ml-4"></dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <footer class="max-w-screen-2xl 2xl:max-w-screen-xl 2xl:px-6 mx-auto justify-between">
+      <div class="footer absolute hidden lg:flex bg-lake-100 h-72 z-0 w-80">
+      </div>
+      <!--FOOTER IMG-->
+      <div class="relative w-full lg:mx-auto xl:justify-center">
+        <img src="assets/images/Footer.png" class="object-cover bg-transparent h-full w-full z-20">
+        <!-- <canvas id="footerImg"  class="w-full object-fit h-60"  width="400" height="400"></canvas>-->
+        <h5 class="text-center flex justify-center items-center align-middle absolute top-2/3 w-full"><span class="font-bold">CGI</span class="font-light ">MOVING</h5>
+      </div>  
+    </div>
+  </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+    <!-- <script src="../node_modules/flowbite/dist/datepicker.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="scripts/sampleData.js"></script>
+    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/registerActivity.js"></script>
+    <script src="scripts/footer.js"></script>
+    <script type="module" src="scripts/doughnutChart.js"></script>
+    <script src="scripts/sidebar.js"></script>
+    <script type="module" src="scripts/table.js"></script>
+</body>
+</html>

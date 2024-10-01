@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGIMoving | Profile</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" /> -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="assets/images/CGI_logo.png">
+</head>
+<body>
+  <header class="bg-white shadow-md">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="index.html" class="flex items-center">
+                <img src="assets/images/CGI_logo.png" class="h-16 mr-3" alt="CGILogo" />
+            </a>
+        <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li class="md:pl-4">
+              <a href="index.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="activities.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Activities</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="event.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Event</a>
+            </li>
+            <li class="md:pl-4">
+              <a href="admin.html" class="nav-link block py-2 pl-3 pr-4 transition duration-600 ease-in-out rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-lake-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin</a>
+            </li>
+            <li class="flex flex-row md:border-l-2 md:border-gray-500 md:pl-6 md:pr-12 nav-link">
+                <div class="flex text-sm bg-gray-800 rounded-full md:mr-4" id="user-pic" aria-expanded="false">
+                  <img class="w-8 h-8 rounded-full hidden md:block" src="assets/images/profile_placeholder.jpg" alt="user photo">
+                </div>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="profileLink flex items-center justify-between w-full py-2 pl-3 pr-4 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 transition duration-600 ease-in-out md:hover:text-lake-200 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                  Profile
+                  <svg class="w-2.5 h-2.5 ml-2.5 rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-full md:max-w-fit dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-2 px-3 bg-gray-50 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                      <li class="pl-8 md:p-0">
+                        <a href="profile.html" class="nav-link block py-2 px-4 hover:bg-gray-100 md:hover:bg-transparent transition duration-600 ease-in-out md:hover:text-lake-200 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                      </li>
+                      <li aria-labelledby="dropdownNavbarLink" class="pl-8 md:p-0">
+                        <button type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 md:hover:bg-transparent transition duration-600 ease-in-out md:hover:text-lake-200 dark:hover:bg-gray-600 dark:hover:text-white">
+                          Log out
+                        </button>
+                      </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+              <button id="instructionBtn" type="button" class="p-2 w-6 h-6 transition duration-600 ease-in-out relative justify-center items-center  mx-auto my-auto text-sm text-gray-600 bg-gray-100 rounded-xl hidden md:block hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                  <span class="absolute inset-0 flex justify-center items-center">?</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+   <div class="flex max-w-screen-2xl 2xl:max-w-screen-xl 2xl:px-6 mx-auto justify-between">
+      <!-- sidebar -->
+      <aside id="sidebar" class="pt-12 md:pt-52 px-6 filter flex-none w-full relative ml-0 left-0 bg-lake-100 min-h-min md:max-w-xs shadow-xs shadow-cloudy-200 transform hidden lg:flex lg:justify-end lg:translate-x-0 transition-transform ease-in-out duration-600 lg:relative z-30">
+        <div class="my-2 flex justify-end">
+            <h5 class="font-light my-auto text-midnight text-center w-full hidden">Menu</h5>
+            <button id="closeFilter" type="button" class="closeFilter w-10 h-10 block lg:hidden relative cursor-pointer text-gray-400 hover:text-gray-600">
+              <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-1 p-4  w-auto px-6 md:px-4 md:pt-4 lg:pt-1 lg:w-10/12">
+            <ul class="space-y-6 settings-menu font-semibold text-sm">
+              <li id="account-li" class="pl-6 py-1 border-l-8 border-bubble-gum-300 "><a href="#account-overview-content" class="content-link hover:tracking-wide hover:font-bold active" data-content="Profile">Account Overview</a></li>
+              <li id="notifications-li" class="pl-6 py-1 border-l-8 border-transparent"><a href="#notifications-content" class="content-link hover:tracking-wide hover:font-bold" data-content="Notification settings">Notifications</a></li>
+              <li id="prizes-li" class="pl-6 py-1 border-l-8 border-transparent"><a href="#prizes-content" class="content-link hover:tracking-wide hover:font-bold" data-content="Selected prizes">Prizes</a></li>
+              <li id="campaign-li" class="pl-6 py-1 border-l-8 border-transparent"><a href="#active-campaigns-content" class="content-link hover:tracking-wide hover:font-bold" data-content="Active campaign">Active Campaigns</a></li>
+              <li id="personal-data-li" class="pl-6 py-1 border-l-8 border-transparent"><a href="#personal-data-content" class="content-link hover:tracking-wide hover:font-bold" data-content="Personal data">Personal Data</a></li>
+            </ul>
+        </div>
+      </aside>
+      <div class="flex flex-auto flex-col lg:flex-row lg:w-full">
+        <main class="md:flex-auto w-full lg:w-8/12 mx-auto md:mt-12 lg:px-12">
+          <div class="flex justify-between pl-7 pr-4 mt-8">
+            <h1 class="text-3xl md:text-4xl font-semibold text-midnight">Profile settings</h1>
+            <div class="mb-2 p-2 flex" id="openSidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="closeFilter w-8 h-8 block lg:hidden relative cursor-pointer text-gray-600 hover:text-gray-400">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+            </div>
+          </div>
+          <div class="mx-auto w-full md:my-12 lg:mt-0">
+              <div class="px-3 md:px-4 py-6 w-full lg:mx-auto">
+                <h2 class="profile-heading pl-4 text-2xl leading-none font-semibold text-midnight mt-6">Profile</h2>
+                <div class="settings-content mx-auto">
+                  <section id="account-overview-content">
+                    <form id="userProfileForm" class="px-2 md:space-x-8 flex flex-col mt-6 mb-12 space-y-4 md:space-y-0 md:flex-row justify-between w-full" action="/update-profile" method="post">
+                      <div class="form-container flex flex-1 flex-col-reverse md:flex-col">
+                          <!-- Name Container -->
+                          <div class="name-container flex flex-col space-y-3">
+                            <div class="flex flex-col">
+                              <label for="firstName" class="pl-2 font-semibold">First Name</label>
+                              <input class="bg-transparent pl-2 text-cloudy-400 font-light border-x-0 border-t-0 border-b-1 border-b-cloudy-600"  type="text" id="firstName" name="firstName" required value="Adam"/>
+                            </div>
+                            <div class="flex flex-col">
+                              <label for="lastName" class="pl-2 font-semibold">Last Name</label>
+                              <input class="bg-transparent pl-2 text-cloudy-400 font-light border-x-0 border-t-0 border-b-1 border-b-cloudy-600" type="text" id="lastName" name="lastName" required value="Adhaway">
+                            </div>
+                          </div>
+                          <!-- Profile Image -->
+                          <div class="profile-pic w-max mx-auto md:mx-0 mb-10 md:mb-0">
+                            <label for="file-upload" class="w-32 h-32 mt-4 mx-auto md:mx-0 rounded-full text-center flex flex-column items-center justify-center cursor-pointer relative overflow-hidden">
+                              <input id="file-upload" type="file" class="hidden">
+                              <img src="assets/images/profile_placeholder.jpg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="label-content absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto" alt="user-pic"/>
+                              <span id="file-preview" class="hidden w-full h-full bg-cover bg-center bg-no-repeat absolute top-0 left-0"></span>
+                            </label>
+                            <h5 for="file-upload" class="mt-1 text-md font-extralight text-cloudy-400">Change profile picture</h5>
+                          </div>
+                      </div>
+                      <div class="form-container flex flex-1 flex-col justify-between">
+                        <div class="name-container flex flex-col space-y-3">
+                          <!-- Password Containers -->
+                          <div class="password-container flex flex-col">
+                              <label for="password" class="pl-2 font-semibold">Password</label>
+                              <input class="bg-transparent pl-2 text-cloudy-400 font-light border-x-0 border-t-0 border-b-1 border-b-cloudy-600" type="password" id="password" name="password" required value="**********">
+                          </div>
+                          <div class="password-container flex flex-col">
+                              <label for="confirmPassword" class="pl-2 font-semibold">Confirm Password</label>
+                              <input class="bg-transparent pl-2 text-cloudy-400 font-light border-x-0 border-t-0 border-b-1 border-b-cloudy-600" type="password" id="confirmPassword" name="confirmPassword" required value="**********">
+                          </div>
+                          <!-- Email Container -->
+                          <div class="email-container flex flex-col">
+                              <label for="email" class="pl-2 font-semibold">Email</label>
+                              <input class="bg-transparent pl-2 text-cloudy-400 font-light border-x-0 border-t-0 border-b-1 border-b-cloudy-600" type="email" id="email" name="email" required value="adam@cgi.se">
+                          </div>
+                        </div>
+                          <!-- Edit Button -->
+                          <button class="bg-lake-300 mx-auto md:mx-0 mt-8 md:mt-0 rounded-full text-white w-32 py-2" type="button" id="editButton">Edit</button>
+                          <!-- Submit Button (hidden initially, shown when editing) -->
+                          <button type="button" id="submitEditButton" class="save bg-bubble-gum-300 mx-auto md:mx-0 mt-8 md:mt-0 rounded-full text-white w-32 py-2 hidden">Save</button>
+                      </div>
+                    </form>
+                    <div class="general-middle-container mx-auto max-w-xs md:mx-0 md:max-w-none my-12 space-y-6 px-2 gap-x-2 md:space-y-0 md:flex md:flex-wrap">
+                      <div class="custom-select-container md:w-1/2">
+                        <div class="w-full md:w-52">
+                          <h3 class="text-2xl leading-none font-semibold text-midnight my-8">Goals</h3>
+                          <label for="goal" class="font-semibold">Activities per month</label>
+                          <div id="goals" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">3</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options w-full max-h-36 text-gray-700 text-sm overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option text-left w-full block px-4" data-value="1">1</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="2">2</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="3">3</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="4">4</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="5">5</button>
+                            </div>
+                          </div>
+                          <select id="goal" class="hidden">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option selected value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                        <div class="w-full flex justify-center md:justify-end md:px-12">
+                          <button type="submit" id="submitButton" class="save bg-bubble-gum-400 mt-6 rounded-full text-white w-32 py-2">Save</button>
+                        </div>  
+                      </div>
+                       <div class="custom-select-container md:flex-1">
+                        <div class="w-full md:w-52">
+                          <div class="flex space-x-6 md:space-x-0 md:justify-between">
+                            <h3 class="text-2xl leading-none font-semibold text-midnight my-8">Points to beat</h3>
+                            <div class="relative group flex items-center justify-end">
+                              <span class="bg-cloudy-100 px-2 rounded-full">?</span>
+                              <span class="block w-52 ml-8 mt-10 z-50 text-midnight border border-midnight text-sm bg-white rounded-md px-3 pt-1 font-extralight absolute top-1/2 sm:left-full transform sm:-translate-y-1/2  opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                  Activating Points to beat will show the highest score amongst the users on the home page. This can be changed at any time.
+                              </span>
+                            </div>
+                          </div>
+                          <label for="points-to-beat" class="font-semibold">Active points to beat?</label>
+                          <div id="active-points-to-beat" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">Yes</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options w-full  text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option text-left w-full block px-4" data-value="yes">Yes</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="no">No</button>
+                            </div>
+                          </div>
+                          <select id="points-to-beat" class="hidden">
+                            <option selected value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>
+                        </div>
+                        <div class="w-full flex justify-center md:justify-end md:px-12">
+                          <button type="submit" id="submitButton" class="save bg-bubble-gum-400 mt-6 rounded-full text-white w-32 py-2">Save</button>
+                        </div>
+                      </div>
+                      <div class="custom-select-container md:w-1/2">
+                        <div class="w-full md:w-52">
+                          <h3 class="text-2xl leading-none font-semibold text-midnight my-8">Language</h3>
+                          <label for="language" class="font-semibold"></label>
+                          <div id="languages" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">English</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options text-gray-700 text-sm w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option text-left w-full block px-4" data-value="english">English</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="swedish">Swedish</button>
+                            </div>
+                          </div>
+                          <select id="language" class="hidden">
+                            <option selected value="english">English</option>
+                            <option value="swedish">Swedish</option>
+                          </select>
+                        </div>
+                        <div class="w-full flex justify-center md:justify-end md:px-12">
+                          <button type="submit" id="submitButton" class="save bg-bubble-gum-400 mt-6 rounded-full text-white w-32 py-2">Save</button>
+                        </div>
+                      </div>
+                      <div class="custom-select-container md:flex-1">
+                        <div class="w-full md:w-52">
+                          <h3 class="text-2xl leading-none font-semibold text-midnight my-8">Office</h3>
+                          <label for="office" class="font-semibold"></label>
+                          <div id="offices" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">Karlstad</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option text-left w-full block px-4" data-value="karlstad">Karlstad</button>
+                              <button class="custom-option text-left w-full block px-4" data-value="stockholm">Stockholm</button>
+                            </div>
+                          </div>
+                          <select id="office" class="hidden">
+                            <option selected value="karlstad">Karlstad</option>
+                            <option value="stockholm">Stockholm</option>
+                          </select>
+                        </div>
+                        <div class="w-full flex justify-center md:justify-end md:px-12">
+                          <button type="submit" id="submitButton" class="save bg-bubble-gum-400 mt-6 rounded-full text-white w-32 py-2">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="group my-12 lg:mt-0 w-full flex flex-col sm:flex-row sm:justify-between space-y-6 px-2 gap-x-2">
+                      <div class="table w-full sm:w-96 sm:max-w-xs mx-auto sm:mx-0">
+                        <h3 class="text-2xl leading-none font-semibold text-midnight mb-4">Group 1</h3>
+                        <table class="table-auto w-full text-left">
+                            <thead>
+                              <tr class="flex justify-between text-sm text-left border-b border-cloudy-100 py-2">
+                                <th class="w-7/12 ">Participants</th>
+                                <th class="sm:w-5/12">Points</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="text-cloudy-500 border-b border-cloudy-100 flex justify-between py-1.5">
+                                <td class="w-8 h-8 hidden sm:block">
+                                    <img src="assets/images/user_2.jpg" alt="Avatar of user" class="w-full h-full object-cover rounded-full">
+                                </td>
+                                <td class="font-light w-5/12 text-md my-auto ">Adam Adhaway</td>
+                                <td class="sm:w-5/12 font-light text-md my-auto ">1</td>
+                              </tr>
+                              <tr class="text-cloudy-500 border-b border-cloudy-100 flex justify-between py-1.5">
+                                <td class="w-8 h-8 hidden sm:block">
+                                    <img src="assets/images/running.jpg" alt="Avatar of user" class="w-full h-full object-cover rounded-full">
+                                </td>
+                                <td class="font-light w-5/12 text-md my-auto ">Elin Brosten</td>
+                                <td class="sm:w-5/12 font-light text-md my-auto">4</td>
+                              </tr>
+                              <tr class="text-cloudy-500 border-b border-cloudy-100 flex justify-between py-1.5">
+                                <td class="w-8 h-8 hidden sm:block">
+                                    <img src="assets/images/kettlebells.jpg" alt="Avatar of user" class="w-full h-full object-cover rounded-full">
+                                </td>
+                                <td class="font-light w-5/12 text-md my-auto">Anton Danielsson</td>
+                                <td class="sm:w-5/12 font-light text-md my-auto">3</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                      <div class="stats-points w-full sm:pt-6 sm:w-1/2 text-left sm:px-3 mx-auto sm:mx-0">
+                        <dl class="flex flex-row sm:w-max sm:flex-col text-center sm:text-left justify-center gap-y-2 gap-x-8">
+                          <div class="flex flex-col gap-y-2">
+                            <dt class="leading-7 text-center font-semibold text-sm text-midnight">Total points</dt>
+                            <dd class="text-4xl flex justify-center font-bold tracking-tight text-gray-900">9</dd>
+                          </div>
+                          <div class="flex flex-col gap-y-2">
+                            <dt class="leading-7 text-center font-bold text-sm text-midnight">Ranking</dt>
+                            <dd class="text-4xl flex justify-center font-bold tracking-tight text-gray-900">4</dd>
+                          </div>
+                          
+                      </dl>
+                    </div>
+                    </div>
+                  </section>
+                  <section id="notifications-content" class="mt-6 mb-12 w-full px-4 hidden">
+                    <h3 class="text-sm text-cloudy-400">
+                      You will get the notifications on your email.
+                      Change email adress in <i>Account Overview</i>.
+                    </h3>
+                    <div class="top-container my-8 space-y-6 px-2 md:px-0 gap-x-10 md:space-y-0 md:flex md:flex-row">
+                      <div class="top-top">
+                          <div class="custom-select-container w-full md:w-52">
+                            <label for="inactivity" class="font-semibold">Inactivity reminder</label>
+                            <div id="inactivities" class="relative custom-select mt-2">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">No</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="No">No</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="Yes">Yes</button>
+                              </div>
+                            </div>
+                            <select id="inactivity" class="hidden">
+                              <option selected value="No">No</option>
+                              <option value="Yes">Yes</option>
+                            </select>
+                          </div>
+                          <div class="inactive">
+                            <div class="custom-select-container w-full md:w-52">
+                              <label for="weekly" class="font-semibold"></label>
+                              <div id="weekly-reminder" class="relative custom-select mt-2">
+                                <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                  <span class="custom-selected">Weekly</span>
+                                  <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                  </svg>
+                                </button>
+                                <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                  <button class="custom-option w-full text-left block px-4" data-value="Weekly">Weekly</button>
+                                  <button class="custom-option w-full text-left block px-4" data-value="Monthly">Monthly</button>
+                                </div>
+                              </div>
+                              <select id="weekly" class="hidden">
+                                <option selected value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="top-bottom">
+                          <div class="custom-select-container">
+                            <label for="summary" class="font-semibold">Monthly summary</label>
+                            <div id="monthly-summary" class="relative custom-select mt-2">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">Yes</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="yes">Yes</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="no">No</button>
+                              </div>
+                            </div>
+                            <select id="summary" class="hidden">
+                              <option selected value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                          </div>
+                          <div class="inactive">
+                            <div class="w-full md:w-52 custom-select-container">
+                              <label for="monthly" class="font-semibold"></label>
+                              <div id="every-other-month" class="relative custom-select mt-2">
+                                <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                  <span class="custom-selected">Every other month</span>
+                                  <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                  </svg>
+                                </button>
+                                <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                  <button class="custom-option w-full text-left block px-4" data-value="Every other month">Every other month</button>
+                                  <button class="custom-option w-full text-left block px-4" data-value="Every month">Every month</button>
+                                </div>
+                              </div>
+                              <select id="monthly" class="hidden">
+                                <option selected value="Every other month">Every other month</option>
+                                <option value="Every month">Every month</option>
+                              </select>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="bottom-container my-8 space-y-6 px-2 md:px-0 gap-x-10 md:space-y-0 md:flex md:flex-row">
+                      <div class="left-container space-y-3">
+                        <div class="w-full md:w-52 custom-select-container">
+                          <label for="new-campaign" class="font-semibold">New campaign</label>
+                          <div id="new-campaigns" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">No</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option w-full text-left block px-4" data-value="No">No</button>
+                              <button class="custom-option text-gray-700 text-sm block px-4" data-value="Yes">Yes</button>
+                            </div>
+                          </div>
+                          <select id="new-campaign" class="hidden">
+                            <option selected value="No">No</option>
+                            <option value="Yes">Yes</option>
+                          </select>
+                        </div>
+                        <div class="w-full md:w-52 custom-select-container">
+                            <label for="new-event" class="font-semibold">New event</label>
+                            <div id="new-events" class="relative custom-select mt-2">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">Yes</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="yes">Yes</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="no">No</button>
+                              </div>
+                            </div>
+                            <select id="new-event" class="hidden">
+                              <option selected value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                        </div>
+                         <div class="w-full md:w-52 custom-select-container">
+                            <label for="receive-ticket" class="font-semibold">Receiving a lottery ticket</label>
+                            <div id="receive-tickets" class="relative custom-select mt-2">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">Yes</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="yes">Yes</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="no">No</button>
+                              </div>
+                            </div>
+                            <select id="receive-ticket" class="hidden">
+                              <option selected value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="right-container space-y-3">
+                        <div class="changes-campaign w-full md:w-52 custom-select-container">
+                          <label for="changes-to-campaign" class="font-semibold">Changes to campaign</label>
+                          <div id="changes-to-campaigns" class="relative custom-select mt-2">
+                            <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                              <span class="custom-selected">Yes</span>
+                              <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                            </button>
+                            <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                              <button class="custom-option w-full text-left block px-4" data-value="yes">Yes</button>
+                              <button class="custom-option w-full text-left block px-4" data-value="no">No</button>
+                            </div>
+                          </div>
+                          <select id="changes-to-campaign" class="hidden">
+                            <option selected value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>
+                        </div>
+                        <div class="w-full md:w-52 custom-select-container">
+                            <label for="changes-to-event" class="font-semibold">Changes to event</label>
+                            <div id="changes-to-events" class="relative custom-select mt-2">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">Yes</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="yes">Yes</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="no">No</button>
+                              </div>
+                            </div>
+                            <select id="changes-to-campaign" class="hidden">
+                              <option selected value="yes">Yes</option>
+                              <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="w-full flex justify-center sm:justify-start">
+                          <button type="submit" id="submitButton" class="save save-notifications bg-bubble-gum-400 mt-8 rounded-full text-white w-32 py-2">Save</button>
+                        </div>  
+                      </div>
+                    </div>
+                  </section>
+                  <section id="prizes-content" class="mt-6 mb-12 w-full px-2 hidden">
+                    <h3 class="pl-2 pb-2 font-semibold">Level 1</h3>
+                    <div class="level open-level">
+                      <div class="md:flex space-y-4 md:space-y-0 md:space-x-8">
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-7">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/bag.jpg" alt="prize" class="block w-full aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50 hidden"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products1" class="relative custom-select">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">White</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="White">White</button>
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="Black">Black</button>
+                              </div>
+                            </div>
+                            <select id="product1" class="hidden">
+                              <option selected value="White">White</option>
+                              <option value="Black">Black</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-6">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/mug.jpg" alt="prize" class="block w-full  aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products2" class="relative custom-select">
+                              <button class="custom-select-trigger flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <span class="custom-selected">Color</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full text-gray-700 text-sm  max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option w-full text-left block px-4" data-value="Color">Color</button>
+                                <button class="custom-option w-full text-left block px-4" data-value="White">White</button>
+                              </div>
+                            </div>
+                            <select id="product2" class="hidden">
+                              <option selected value="Color">Color</option>
+                              <option value="White">White</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <button id="saveBtn" class="save save-prize flex mx-auto justify-center md:mr-0 text-right text-sm delete-btn h-9 w-32 mt-5 transition duration-600 ease-in-out bg-bubble-gum-400 text-white font-bold py-2 px-6 rounded-full">Save</button>
+                    </div>
+                    <h3 class="pl-2 pb-2 font-semibold">Level 2</h3>
+                    <div class="level locked-level">
+                      <div class="md:flex space-y-4 md:space-y-0 md:space-x-8">
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-7">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/case.jpg" alt="prize" class="block w-full aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products3" class="relative locked custom-select">
+                              <button class="custom-select-trigger cursor-not-allowed flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-cloudy-200">
+                                  <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="custom-selected hidden">White</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="White">White</button>
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="Black">Black</button>
+                              </div>
+                            </div>
+                            <select id="product3" class="hidden">
+                              <option selected value="White">White</option>
+                              <option value="Black">Black</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-6">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/sweatshirt.jpg" alt="prize" class="block w-full aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products4" class="relative locked custom-select">
+                              <button class="custom-select-trigger cursor-not-allowed flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-cloudy-200">
+                                  <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="custom-selected hidden">Color</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="Color">Color</button>
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="White">White</button>
+                              </div>
+                            </div>
+                            <select id="product4" class="hidden">
+                              <option selected value="Color">Color</option>
+                              <option value="White">White</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <button id="saveBtn" class="save save-prize flex mx-auto justify-center md:mr-0 text-right text-sm delete-btn h-9 w-32 mt-5 transition duration-600 ease-in-out bg-bubble-gum-400 text-white font-bold py-2 px-6 rounded-full" disabled="true">Save</button>
+                    </div>
+                    <h3 class="pl-2 pb-2 font-semibold">Level 3</h3>
+                    <div class="level locked-level">
+                      <div class="md:flex space-y-4 md:space-y-0 md:space-x-8">
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-7">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/leggings.jpg" alt="prize" class="block w-full aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products5" class="relative locked custom-select">
+                              <button class="custom-select-trigger cursor-not-allowed flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-cloudy-200">
+                                  <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="custom-selected hidden">White</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="White">White</button>
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="Black">Black</button>
+                              </div>
+                            </div>
+                            <select id="product5" class="hidden">
+                              <option selected value="White">White</option>
+                              <option value="Black">Black</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="product custom-select-container flex-1 flex flex-row gap-x-4 md:gap-x-6">
+                          <div class="relative inline-block w-1/2 aspect-square md:w-40 rounded-md overflow-hidden">
+                            <img src="assets/images/prizes/hoodie.jpg" alt="prize" class="block w-full aspect-square object-cover">
+                            <div class="absolute inset-0 bg-white opacity-50"></div>
+                          </div>
+                          <div class="drop-down flex-1">
+                            <div id="products6" class="relative locked custom-select">
+                              <button class="custom-select-trigger cursor-not-allowed flex flex-row justify-between bg-white py-2 border border-midnight rounded-md focus:ring-transparent focus:border-midnight text-gray-600 text-sm w-full p-3.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-cloudy-200">
+                                  <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="custom-selected hidden">Color</span>
+                                <svg class="w-2.5 h-2.5 ml-2.5 my-auto rotate-0 toggleSvg duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                              </button>
+                              <div class="custom-options w-full max-h-36 overflow-scroll space-y-4 mt-1 hidden absolute bg-white py-2 border border-midnight rounded-md 0 z-10">
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="Color">Color</button>
+                                <button class="custom-option text-gray-700 text-sm block px-4" data-value="White">White</button>
+                              </div>
+                            </div>
+                            <select id="product6" class="hidden">
+                              <option selected value="Color">Color</option>
+                              <option value="White">White</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <button id="saveBtn" class="save save-prize flex mx-auto justify-center md:mr-0 text-right text-sm delete-btn h-9 w-32 mt-5 transition duration-600 ease-in-out bg-bubble-gum-400 text-white font-bold py-2 px-6 rounded-full">Save</button>
+                    </div>
+                  </section>
+                  <section id="active-campaigns-content" class="px-2 md:space-x-8 flex flex-col mt-6 mb-12 space-y-4 md:space-y-0 md:flex-row w-full hidden">
+                    <div class="flex flex-col space-y-3 flex-1 md:flex-col">
+                      <div class="flex flex-col">
+                        <h3 class="pl-2 font-semibold">Duration</h3>
+                        <p class="py-2 pl-2 space-x-2 text-cloudy-400 font-light border-b border-b-cloudy-600" id="duration">
+                          <span id="duration-start">2024-03-01</span>
+                          <span>-</span>
+                          <span id="duration-end">2024-03-04</span>
+                        </p>
+                      </div>
+                      <div class="flex flex-col">
+                        <h3 class="pl-2 font-semibold">Number of levels</h3>
+                          <p class="py-2 pl-2 space-x-2 text-cloudy-400 font-light border-b border-b-cloudy-600" id="number-of-levels">
+                          3
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex flex-col space-y-3 flex-1 md:flex-col">
+                      <!-- Password Containers -->
+                        <div class="flex flex-col">
+                          <h3 class="pl-2 font-semibold">Number of participants</h3>
+                            <p class="py-2 pl-2 space-x-2 text-cloudy-400 font-light border-b border-b-cloudy-600" id="number-of-participants">
+                            204
+                          </p>
+                        </div>
+                        <div class="flex flex-col">
+                          <h3 class="pl-2 font-semibold">Points per level</h3>
+                            <p class="py-2 pl-2 space-x-2 text-cloudy-400 font-light border-b border-b-cloudy-600" id="points-per-level">
+                            50
+                          </p>
+                        </div>
+                    </div>
+                  </section>
+                  <section id="personal-data-content" class="px-4 mt-6 space-y-4 md:w-96 hidden">
+                    <h3 class="text-sm text-cloudy-400">
+                      Your account contains personal data that you have given us. 
+                      This allows you to download and delete this data.
+                    </h3>
+                    <h4 class="text-sm font-bold text-midnight">
+                      Deleting this data will permanently remove your account, and this cannot be recovered. 
+                    </h5>
+                    <div class="flex justify-center md:justify-start gap-x-5">
+                      <button type="button" class="flex justify-center items-center text-sm download-btn h-9 w-32 mt-5 bg-white border-[1.5px] border-midnight text-midnight font-bold py-4 px-6 rounded-full">Download</button>
+                      <button type="button" class="delete flex justify-center items-center text-sm delete-btn h-9 w-32 mt-5 transition duration-600 ease-in-out bg-bubble-gum-300 text-white font-bold py-2 px-6 rounded-full">Delete</button>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          <!-- The overlay for pop-up windows -->
+          <div id="overlay" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-40"></div>
+          <!-- The video tutorial pop-up window -->
+          <div id="popup" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg w-10/12 lg:w-7/12 z-50 text-center rounded-xl hidden">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="px-14 pb-8 ">
+              <h2 class="text-2xl font-semibold mb-6 text-left">Instructions video for CGI<span class="font-light text-gray-800">Moving</span></h2>
+              <p class="text-sm text-left mb-4 font-light text-gray-800">Is there something that isn't working out? Or something that you are wondering about? Check out the instructions video below! Hopefully it will answer all your questions.</p>
+              <img class="w-10/12 lg:w-7/12" src="assets/images/vidImg.png" alt="pic of video-preview">
+              <div class="flex justify-end">
+                <button id="closePopup" class="closePopupBtn mt-4 bg-lake-200 hover:bg-lake-300 text-white font-bold py-1 px-8 rounded-full">Ok!</button>
+              </div>
+            </div>
+          </div>
+          <!-- NOTIFICATIONS AFTER EDIT, POPUP WINDOWS-->
+          <div id="successfullySavedPopup" class="hidden bg-white z-50 w-42 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full sm:-translate-y-1/2 shadow-lg rounded-xl ">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="flex flex-col justify-center text-center sm:w-10/12 mx-auto px-4 sm:px-0">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 bg-forest text-white text-center mx-auto rounded-full p-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <h2 class="font-semibold text-md sm:text-lg md:text-2xl py-4">You successfully saved your changes!</h2>
+            </div>
+            <div class="flex justify-center px-8 pb-8">
+              <button id="closePopup" class="closePopupBtn mt-4 mx-2 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1 px-8 rounded-full">Continue</button>
+            </div>
+          </div>
+          <div id="sureYouWannaDelete" class="hidden bg-white z-50 w-96 max:w-sm fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full sm:-translate-y-1/2 shadow-lg rounded-xl ">
+            <div class="flex justify-end">
+              <button id="closePopup2" type="button" class="closePopupBtn p-2 w-10 h-10 relative cursor-pointer justify-center items-center text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-700">
+                <span class="text-4xl absolute inset-0 flex justify-center items-center rotate-45">+</span>
+              </button>
+            </div>
+            <div class="flex flex-col justify-center text-center sm:w-10/12 mx-auto space-y-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#ee657a" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-28 h-28 mx-auto rounded-full">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <h2 class="font-semibold text-md sm:text-2xl">Are you sure you wanna delete all all data?</h2>
+              <p class="font-light text-sm">Deleting this data will permanently remove you account, this cannot be recovered.</p>
+            </div>
+            <div class="flex justify-center pb-8">
+              <a href="deletePersonalData.html" id="deleteAccount" class="w-2/5 max-w-[100px] flex justify-center text-sm mt-4 mx-2 bg-white border-[1.5px] border-midnight text-midnight font-bold py-1.5 px-6 rounded-full">Continue</a>
+              <button id="closePopup" class="w-2/5 max-w-[100px] flex justify-center text-sm closePopupBtn mt-4 mx-2 bg-lake-200 text-white font-bold py-2 px-6 rounded-full">Cancel</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <footer>
+      <div class="footer relative bottom-0 w-full left-0 bg-green-400 h-60">
+        <!--FOOTER IMG-->
+        <!-- <img src="assets/images/landscape.jpg" class="object-cover h-36 w-full"> -->
+        <canvas id="footerImg"  class="w-full object-fit h-60"  width="400" height="400"></canvas>
+        <h5 class="text-center flex justify-center items-center align-middle absolute top-2/3 w-full"><span class="font-bold">CGI</span class="font-light ">MOVING</h5>
+      </div>
+    </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/sidebar_user.js"></script>
+  <script src="scripts/profile.js"></script>
+  <script src="scripts/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGIMoving</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0"/>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="assets/images/CGI_logo.png">
+</head>
+<body>
+    <header class="w-full left-0 bg-lake-100 flex items-end h-60">
+        <div class="header w-full mx-auto md:pl-40 max-w-2xl">
+            <h1 class="text-3xl text-midnight font-thin py-10 flex justify-center md:justify-start w-full"><span class="font-bold">CGI</span>MOVING</h1>
+        </div>
+    </header>
+    <main class="wrapper mt-6 mx-auto max-w-7xl sm:px-6 w-full justify-center">
+        <div class="px-2 space-y-5 w-96 mx-auto">
+            <h2 class="px-1 text-2xl text-midnight font-semibold">Delete personal data</h2>
+            <p class="px-1 text-red-500 font-bold">Deleting this data will permanently remove you account, and this cannot be recovered.</p>
+            <form id="confirmForm" class="flex flex-col justify-center mx-auto space-y-8" action="/deleteAccount" method="post">
+                <div class="flex flex-col space-y-2">
+                    <label for="password" class="pl-2 text-sm font-semibold">Password</label>
+                    <input class="bg-transparent text-cloudy-400 font-light rounded-md border-midnight" type="password" id="password" name="password" required placeholder="Please enter you password.">
+                </div>
+                <button id="deletePersonalData" type="submit" class="bg-bubble-gum-300 font-semibold text-white rounded-full px-4 py-2 w-28 mx-auto">Confirm</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
